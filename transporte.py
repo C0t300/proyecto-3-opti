@@ -22,17 +22,14 @@ def puntos(cantidadPuntos: int, suma: int) -> list:
                 break
     return lista
 
-small = 10
-medium = 100
-large = 1000
-
-tipo = "aslñdjk"
-while tipo not in ("s", "m", "l"):
-    tipo = input("¿Cual es el tamaño del problema? (s/m/l)")
+tipo = None
+puntosDemanda = None
+while tipo not in ("p", "m", "g"):
+    tipo = input("¿Cual es el tamaño del problema? (p/m/g): ")
     if len(tipo) > 0:
         tipo = tipo.lower()
 
-if tipo == "s":
+if tipo == "p":
     cantidadPuntosOferta = randint(10, 99)
     cantidadPuntosDemanda = randint(10, 99)
     matrix = [[randint(1, 9) for x in range(cantidadPuntosDemanda)] for y in range(cantidadPuntosOferta)]
@@ -71,5 +68,25 @@ elif tipo == "g":
     print("Demanda: ", puntosDemanda)
     print("Oferta: ", puntosOferta)
 
-
+if puntosDemanda:
+    archivo = open("transporte.txt", "w")
+    s = "Demanda: "
+    for i in puntosDemanda:
+        s += str(i) + ","
+    s = s[:-1]
+    archivo.write(s + "\n")
+    s = "Oferta: "
+    for i in puntosOferta:
+        s += str(i) + ","
+    s = s[:-1]
+    archivo.write(s + "\n")
+    s = "MatrizCosto: "
+    for row in matrix:
+        for col in row:
+            s += str(col) + ","
+        s = s[:-1]
+        s += "|"
+    s = s[:-1]
+    archivo.write(s + "\n")
+    archivo.close()
 
