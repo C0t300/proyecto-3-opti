@@ -45,6 +45,6 @@ costoTotal = 0
 
 for t, cost in resultado:
     x, y = t
-    costoTotal += matriz[x][y] * cost
+    costoTotal += matriz[y][x] * cost
 
 print(costoTotal)
