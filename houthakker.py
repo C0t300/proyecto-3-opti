@@ -1,4 +1,5 @@
 import sys
+import time
 
 def houthakker(supply:list, demand:list, matrix:list) -> int:
     oferta = supply.copy()
@@ -51,9 +52,10 @@ for linea in archivo:
     
 archivo.close()
 
-oferta = [6000, 4000, 2000, 1500]
-demanda = [5000, 6000, 2500]
-matriz = [[3, 2, 7, 6], [7, 5, 2, 3], [2, 5, 4, 5]]
+inicio = time.time()
 
+print("Houthakker.")
 
 print(houthakker(oferta, demanda, matriz))
+
+print("El tiempo de calculo fue de:", time.time() - inicio, "segundos.")

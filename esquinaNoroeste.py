@@ -1,4 +1,5 @@
 import sys
+import time
 
 def north_west_corner(supply, demand):
     supply_copy = supply.copy()
@@ -39,6 +40,10 @@ for linea in archivo:
     
 archivo.close()
 
+print("Esquina Noroeste.")
+
+inicio = time.time()
+
 resultado = north_west_corner(oferta, demanda)
 
 costoTotal = 0
@@ -47,4 +52,5 @@ for t, cost in resultado:
     x, y = t
     costoTotal += matriz[y][x] * cost
 
+print("El tiempo de calculo fue de:", time.time() - inicio, "segundos.")
 print(costoTotal)
